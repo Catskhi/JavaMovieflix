@@ -12,21 +12,21 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CategoryService {
 
-    private final CategoryRepository categoryRepository;
+    private final CategoryRepository repository;
 
     public List<Category> findAll() {
-        return categoryRepository.findAll();
+        return repository.findAll();
     }
 
-    public Category saveCategory(Category category) {
-        return categoryRepository.save(category);
+    public Category save(Category category) {
+        return repository.save(category);
     }
 
-    public Optional<Category> getByCategoryId(Long id) {
-        return categoryRepository.findById(id);
+    public Optional<Category> findById(Long id) {
+        return repository.findById(id);
     }
 
-    public void deleteCategoryById(Long id) {
-        categoryRepository.deleteById(id);
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }

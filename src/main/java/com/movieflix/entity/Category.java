@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 @Entity
-@Table(name = "category")
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "category")
 public class Category {
 
     @Id

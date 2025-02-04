@@ -31,21 +31,21 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<CategoryResponse> saveCategory(@RequestBody CategoryRequest request) {
         Category newCategory = CategoryMapper.toCategory(request);
-        Category savedCategory = categoryService.saveCategory(newCategory);
+        Category savedCategory = categoryService.save(newCategory);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(CategoryMapper.toCategoryResponse(savedCategory));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CategoryResponse> getByCategoryId(@PathVariable Long id) {
-        return categoryService.getByCategoryId(id)
+        return categoryService.findById(id)
                 .map(category -> ResponseEntity.ok(CategoryMapper.toCategoryResponse(category)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCategoryById(@PathVariable Long id) {
-        categoryService.deleteCategoryById(id);
+        categoryService.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
